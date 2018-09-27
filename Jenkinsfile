@@ -33,7 +33,7 @@ node {
 
     stage('Build') {
       // Build the image and push it to a staging repository
-      repotag = inputConfig['dockerRepository'] + ":${BUILD_NUMBER}"
+      repotag = inputConfig['dockerRepository']
       docker.withRegistry(inputConfig['dockerRegistryUrl'], inputConfig['dockerCredentials']) {
         app = docker.build(repotag)
         app.push()
